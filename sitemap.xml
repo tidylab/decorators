@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
+  <url>
+    <loc>https://tidylab.github.io/decorators//index.html</loc>
+  </url>
+  <url>
+    <loc>https://tidylab.github.io/decorators//reference/pipe.html</loc>
+  </url>
+  <url>
+    <loc>https://tidylab.github.io/decorators//reference/time_it.html</loc>
+  </url>
+  <url>
+    <loc>https://tidylab.github.io/decorators//articles/article_template.html</loc>
+  </url>
+</urlset>
