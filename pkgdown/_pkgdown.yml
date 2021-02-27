@@ -1,0 +1,41 @@
+url: https://tidylab.github.io/decorators/
+title: "Decorators in R"
+authors:
+  Harel Lustiger:
+    href: https://github.com/harell
+  Tidylab:
+    href: "https://github.com/tidylab"
+    html: "<img src='https://github.com/tidylab/tidylab/blob/master/favicon/apple-touch-icon-120x120.png?raw=true' height=24>"
+# template:
+#    params:
+#      docsearch:
+#        api_key: d5f049d51d6123dd767e5f8bc7882c35
+#        index_name: tidylab-decorators
+
+# Articles ----------------------------------------------------------------
+# articles:
+# - title: Base Patterns
+#   contents:
+#   - patterns/Singleton
+#   - patterns/ValueObject
+#   - patterns/NullObject
+# - title: Object-Relational Patterns
+#   contents:
+#   - patterns/Repository
+#- title: Appendix
+#  contents:
+#  - appendices/Dictionary
+#  - appendices/SpecialCase
+
+# Functions ---------------------------------------------------------------
+# reference:
+# - title: Base Patterns
+#   contents:
+#   - 'Singleton'
+#   - 'ValueObject'
+#   - 'NullObject'
+# - title: Object-Relational Patterns
+#   desc: >
+#     Simplify access to data stored in persistent storage of some kind.
+#   contents:
+#   - 'AbstractRepository'
