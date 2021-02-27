@@ -1,0 +1,10 @@
+citHeader("To cite decorators in publications use:")
+
+bibentry("Manual",
+         title        = "Decorators in R",
+         author       = "Harel Lustiger",
+         organization = "Tidylab",
+         address      = "Auckland, New Zealand",
+         year         = version$year,
+         url          = "https://github.com/tidylab/decorators"
+	)

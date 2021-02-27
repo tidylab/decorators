@@ -1,0 +1,61 @@
+---
+output: github_document
+bibliography: [./inst/REFERENCES.bib]
+biblio-style: apalike
+link-citations: yes
+editor_options: 
+  canonical: true
+  markdown: 
+    wrap: 80
+    references: 
+      location: section
+---
+
+```{r, include = FALSE}
+source(file.path(usethis::proj_get(), "vignettes",  "_common.R"))
+```
+
+# `decorators` <img src="https://raw.githubusercontent.com/tidylab/decorators/master/pkgdown/logo.png" align="right" height="75"/>
+
+<!-- badges: start -->
+
+[![CRAN
+status](https://www.r-pkg.org/badges/version/decorators)](https://CRAN.R-project.org/package=decorators)
+[![R build
+status](https://github.com/tidylab/decorators/workflows/R-CMD-check/badge.svg)](https://github.com/tidylab/decorators/actions)
+[![codecov](https://codecov.io/gh/tidylab/decorators/branch/master/graph/badge.svg?token=U6FL5N32FL)](https://codecov.io/gh/tidylab/decorators)
+
+<!-- badges: end -->
+
+
+## Introduction
+
+`r read.dcf("DESCRIPTION", "Description")[[1]]`
+
+
+## Example: `time_it` decorator
+
+```{r, echo=TRUE}
+# Running the original Sys.sleep() produces no output
+Sys.sleep(0.1)
+
+# Decorating the Sys.sleep() with time_it() measures Sys.sleep() execution time 
+# and outputs the measurement   
+Sys.sleep <- decorators::time_it(base::Sys.sleep)
+Sys.sleep(0.1)
+```    
+
+## Installation
+
+You can install the released version of `decorators` from CRAN with:
+
+``` r
+install.packages("decorators")
+```
+
+And the development version from GitHub with:
+
+``` r
+# install.packages("devtools")
+devtools::install_github("tidylab/decorators")
+```

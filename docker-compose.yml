@@ -1,0 +1,47 @@
+services:
+  ######################################################
+  # R Core
+  ######################################################
+  r-core:
+    image: r/core/package:4.0.4
+    build:
+      context: ./
+      dockerfile: ./.dev/docker/r-core/Dockerfile
+    entrypoint: '/bin/bash'
+    container_name: r_core
+    restart: "no"
+  ######################################################
+  # R Development
+  ######################################################
+  r-develop:
+    image: r/core/package:4.0.4
+    build:
+      context: ./
+      dockerfile: ./.dev/docker/r-core/Dockerfile
+    entrypoint: '/init'
+    container_name: r_develop
+    volumes:
+      - ".:/home/rstudio/rproject/"
+    ports:
+      - 8787:8787
+    environment:
+      - DISABLE_AUTH=true
+    restart: "no"
+  ######################################################
+  # R Testing
+  ######################################################
+  r-test:
+    image: r/test/package:4.0.4
+    build:
+      context: ./
+      dockerfile: ./.dev/docker/r-test/Dockerfile
+    entrypoint: '/bin/bash'
+    container_name: r_test
+    restart: "no"
+    depends_on:
+      - r-core
+  ######################################################
+version: "3.8"
+networks:
+  default:
+    name: r-project
