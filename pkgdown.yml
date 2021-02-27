@@ -3,7 +3,7 @@ pkgdown: 1.6.1
 pkgdown_sha: ~
 articles:
   article_template: article_template.html
-last_built: 2021-02-27T07:08Z
+last_built: 2021-02-27T08:18Z
 urls:
   reference: https://tidylab.github.io/decorators//reference
   article: https://tidylab.github.io/decorators//articles
