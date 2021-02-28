@@ -1,9 +1,9 @@
 #' @title Measure Execution Time of Functions
 #' @description Wrap a function with a timer.
-#' @param func (`function`) A function.
+#' @param func (`function`) A function to decorate.
 #' @param units (`character`) Units in which the results are desired, including:
 #'   \code{"auto"}, \code{"secs"}, \code{"mins"}, \code{"hours"}, \code{"days"},
-#'   and \code{"weeks"}.
+#'   and \code{"weeks"}. See \link[base]{difftime}.
 #' @param digits (`integer`) The number of significant digits to be used. See
 #'   \link[base]{signif}.
 #' @return (`closure`) An object that contains the original function bound to the environment of the decorator.
@@ -14,7 +14,7 @@
 #' @export
 #' @examples
 #' Sys.sleep <- time_it(base::Sys.sleep)
-#' Sys.sleep(0.01)
+#' Sys.sleep(0.1)
 time_it <- function(func, units = "auto", digits = 2){
     wrapper <- function(...){
         start_time <- Sys.time()
