@@ -3,7 +3,7 @@ Type: Package
 Title: Extend the Behaviour of a Function without Explicitly Modifying it
 URL: https://tidylab.github.io/decorators/, https://github.com/tidylab/decorators
 BugReports: https://github.com/tidylab/decorators/issues
-Version: 0.2.0
+Version: 0.1.0
 Date: 2021-02-15
 Authors@R: c(
     person("Harel", "Lustiger", email = "tidylab@gmail.com", role = c("aut", "cre"),
