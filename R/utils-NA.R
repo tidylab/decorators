@@ -15,6 +15,7 @@
 #' @name NA_x_
 #' @examples
 #' class(NA_Date_)
+#' class(NA_POSIXct_)
 NULL
 
 #' @rdname NA_x_
