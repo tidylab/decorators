@@ -24,4 +24,4 @@ NA_Date_ <- structure(NA_real_, class = "Date")
 
 #' @rdname NA_x_
 #' @export
-NA_POSIXct_ <- .POSIXct(NA_real_, tz = "UTC")
+NA_POSIXct_ <- structure(NA_real_, class = c("POSIXct", "POSIXt"))

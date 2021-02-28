@@ -17,18 +17,11 @@
 #' try(Car(model = 555, hp = 120)) # fails because model is numeric rather than character
 #'
 validate_input <- function(func){
-    args_expected <- data.frame()
-    for(i in seq_along(formals(func))){
-        args_expected[i, "name"] = names(formals(func))[i]
-        args_expected[i, "type"] = class(formals(func)[[i]])[1]
-    }
+    # Validate Input Decorator
+    args_expected <- .extract_name_and_type(args = formals(func))
 
     wrapper <- function(...){
-        args_actual <- data.frame()
-        for(i in seq_along(list(...))){
-            args_actual[i, "name"] = names(list(...))[i]
-            args_actual[i, "type"] = class(list(...)[[i]])[1]
-        }
+        args_actual <- .extract_name_and_type(args = list(...))
 
         args <- merge(args_expected, args_actual, by = "name", suffixes = c(".expected", ".actual"))
         for(i in seq_len(nrow(args))){
@@ -41,4 +34,29 @@ validate_input <- function(func){
     }
 
     return(wrapper)
+}
+
+
+# Helpers -----------------------------------------------------------------
+.extract_name_and_type <- function(args){
+    dict <- data.frame(name = NA_character_, type = NA_character_)[0,]
+
+    for(i in seq_along(args)){ # handle Value-Objects
+        if(class(args[[i]])[1] %in% "call"){
+            null_value <- eval(args[[i]])
+            if(class(null_value) != "list") null_value <- as.list(null_value)
+            new_entery <- .extract_name_and_type(null_value)
+
+        } else if (class(args[[i]])[1] %in% "name") { # handle type extensions
+            type <- gsub("NA_|_$", "", as.character(args[[i]]))
+            new_entery <- data.frame(name = names(args)[i], type = type)
+
+        } else { # handle built-in types
+            new_entery <- data.frame(name = names(args)[i], type = class(args[[i]])[1])
+        }# end if-else
+
+        dict <- rbind(dict, new_entery)
+    }# end for-loop
+
+    return(dict)
 }
