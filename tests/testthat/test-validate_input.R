@@ -1,6 +1,10 @@
 # Setup -------------------------------------------------------------------
 Customer <<- function(given = NA_character_, family = NA_character_)
     return(data.frame(given = given, family = family))
+
+WorldRecord <<- function(date = NA_Date_, start_time = NA_POSIXct_, end_time = start_time)
+    return(data.frame(date = date, start_time = start_time, end_time = end_time))
+
 Runner <<- function(customer = Customer(), birth_date = NA_Date_, start_time = NA_POSIXct_)
     return(cbind(customer, data.frame(birth_date = birth_date, start_time)))
 
@@ -14,6 +18,12 @@ describe("decorating a ValueObject with validate_input adds data type validation
     })
 
     it("built-in NA types", {
+        expect_type(WorldRecord <- validate_input(WorldRecord), "closure")
+        expect_s3_class(WorldRecord(date = Sys.Date(), start_time = Sys.time()), "data.frame")
+        expect_error(WorldRecord(date = Sys.Date(), start_time = "xxx"), "start_time")
+    })
+
+    it("nested value object", {
         athlete <- Customer(given = "Usain", family = "Bolt")
         expect_s3_class(Runner(athlete), "data.frame")
         expect_type(Runner <- validate_input(Runner), "closure")

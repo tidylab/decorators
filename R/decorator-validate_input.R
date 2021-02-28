@@ -17,7 +17,6 @@
 #' try(Car(model = 555, hp = 120)) # fails because model is numeric rather than character
 #'
 validate_input <- function(func){
-    # Validate Input Decorator
     args_expected <- .extract_name_and_type(args = formals(func))
 
     wrapper <- function(...){
