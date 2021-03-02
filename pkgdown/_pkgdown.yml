@@ -13,9 +13,9 @@ authors:
 #        index_name: tidylab-decorators
 
 # Articles ----------------------------------------------------------------
-articles: ~
-# - title: Base Patterns
-#   contents:
+articles:
+- title: ~
+  contents: ~
 #   - patterns/Singleton
 #   - patterns/ValueObject
 #   - patterns/NullObject
@@ -28,14 +28,11 @@ articles: ~
 #  - appendices/SpecialCase
 
 # Functions ---------------------------------------------------------------
-# reference:
-# - title: Base Patterns
-#   contents:
-#   - 'Singleton'
-#   - 'ValueObject'
-#   - 'NullObject'
-# - title: Object-Relational Patterns
-#   desc: >
-#     Simplify access to data stored in persistent storage of some kind.
-#   contents:
-#   - 'AbstractRepository'
+reference:
+- title: Decorators
+  contents:
+  - 'time_it'
+  - 'validate_arguments'
+- title: Designated Not Available / Missing Values
+  contents:
+  - starts_with('NA')

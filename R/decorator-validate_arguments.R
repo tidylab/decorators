@@ -1,6 +1,6 @@
 #' @title Validate the Type of Input Arguments
 #' @description Wrap a function with a input validation.
-#' @includeRmd vignettes/details/validate_input.Rmd
+#' @includeRmd vignettes/details/validate_arguments.Rmd
 #' @note The original function must have default values of the designated type.
 #' @inheritParams time_it
 #' @return (`closure`) An object that contains the original function bound to the environment of the decorator.
@@ -14,10 +14,10 @@
 #'     return(data.frame(model = model, hp = hp))
 #' }
 #'
-#' Car <- validate_input(Car)
+#' Car <- validate_arguments(Car)
 #' try(Car(model = 555, hp = 120)) # fails because model is numeric rather than character
 #'
-validate_input <- function(func){
+validate_arguments <- function(func){
     args_expected <- .extract_name_and_type(args = formals(func))
 
     wrapper <- function(...){

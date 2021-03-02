@@ -10,15 +10,15 @@ Runner <<- function(customer = Customer(), birth_date = NA_Date_, start_time = N
 
 
 # Tests -------------------------------------------------------------------
-describe("decorating a ValueObject with validate_input adds data type validation", {
+describe("decorating a ValueObject with validate_arguments adds data type validation", {
     it("built-in NA types", {
         expect_s3_class(Customer(given = "Bilbo", family = 888), "data.frame")
-        expect_type(Customer <- validate_input(Customer), "closure")
+        expect_type(Customer <- validate_arguments(Customer), "closure")
         expect_error(Customer(given = "Bilbo", family = 888), "family")
     })
 
     it("built-in NA types", {
-        expect_type(WorldRecord <- validate_input(WorldRecord), "closure")
+        expect_type(WorldRecord <- validate_arguments(WorldRecord), "closure")
         expect_s3_class(WorldRecord(date = Sys.Date(), start_time = Sys.time()), "data.frame")
         expect_error(WorldRecord(date = Sys.Date(), start_time = "xxx"), "start_time")
     })
@@ -26,7 +26,7 @@ describe("decorating a ValueObject with validate_input adds data type validation
     it("nested value object", {
         athlete <- Customer(given = "Usain", family = "Bolt")
         expect_s3_class(Runner(athlete), "data.frame")
-        expect_type(Runner <- validate_input(Runner), "closure")
+        expect_type(Runner <- validate_arguments(Runner), "closure")
         expect_s3_class(Runner(), "data.frame")
         # expect_s3_class(Runner(athlete), "data.frame")
         expect_s3_class(Runner(athlete, birth_date = Sys.Date(), start_time = Sys.time()), "data.frame")

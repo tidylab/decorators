@@ -11,7 +11,7 @@ source(file.path(usethis::proj_get(), "vignettes",  "_common.R"))
 
 <!-- One line about what the function does -->
 
-`validate_input` 
+`validate_arguments` 
 
 ## How It Works
 

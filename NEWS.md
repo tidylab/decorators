@@ -3,7 +3,7 @@
 ## New Decorators
 
 -   `time_it` 
--   `validate_input` 
+-   `validate_arguments` 
 
 ## New Utiliy
 
