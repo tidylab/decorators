@@ -1,10 +1,11 @@
 #' @title Validate the Type of Input Arguments
 #' @description Wrap a function with a input validation.
-#' @note Original function must have default values of the desired type.
+#' @includeRmd vignettes/details/validate_input.Rmd
+#' @note The original function must have default values of the designated type.
 #' @inheritParams time_it
 #' @return (`closure`) An object that contains the original function bound to the environment of the decorator.
 #' @references
-#' * \href{https://docs.python.org/3/library/timeit.html}{timeit Python module}
+#' * \href{https://pydantic-docs.helpmanual.io/usage/validation_decorator/}{Similar Python module}
 #' * \href{http://adv-r.had.co.nz/Functional-programming.html}{Closures in R}
 #' @family defensive programming
 #' @export

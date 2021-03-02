@@ -1,0 +1,22 @@
+---
+title: "Validate Input"
+editor_options: 
+  markdown: 
+    wrap: 80
+---
+
+```{r, include = FALSE}
+source(file.path(usethis::proj_get(), "vignettes",  "_common.R"))
+```
+
+<!-- One line about what the function does -->
+
+`validate_input` 
+
+## How It Works
+
+When a function fails in R, some functions produce a run-time error while others
+return `NULL` (and potentially prompt a warning). What the function evokes in
+case of a failure is subjected to its programmer discretion. Usually, the
+programmer follows either a punitive or forgiving policy regarding how
+run-time errors should be handled.

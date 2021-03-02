@@ -11,7 +11,7 @@
 #' 2. Representing missing values of a specific type.
 #'
 #' This package provides additional \code{NA} types.
-#'
+#' @return \code{NA} value of a particular type.
 #' @name NA_x_
 #' @examples
 #' class(NA_Date_)
