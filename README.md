@@ -34,7 +34,7 @@ reduce bugs by adding defensive programming routines.
     # and outputs the measurement   
     Sys.sleep <- decorators::time_it(base::Sys.sleep)
     Sys.sleep(0.1)
-    #> Time difference of 0.1076732 secs
+    #> Time difference of 0.11 secs
 
 ## Installation
 
