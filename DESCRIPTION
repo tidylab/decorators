@@ -32,8 +32,7 @@ Language: en-GB
 Depends: 
     R (>= 3.5)
 Suggests: 
-    testthat,
+    testthat
 Imports: 
-    R6,
-    purrr,
+    purrr
 Config/testthat/edition: 3

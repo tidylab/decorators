@@ -15,5 +15,5 @@ NULL
 #' @keywords internal
 #' @export
 #' @importFrom purrr %||%
-#' @usage lhs \%||\% rhs
+#' @usage x \%||\% y
 NULL

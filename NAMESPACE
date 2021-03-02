@@ -2,10 +2,8 @@
 
 export("%>%")
 export("%||%")
-export(BaseException)
 export(NA_Date_)
 export(NA_POSIXct_)
-export(ValidationError)
 export(time_it)
 export(validate_input)
 importFrom(purrr,"%>%")
