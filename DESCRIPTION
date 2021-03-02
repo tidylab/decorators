@@ -34,5 +34,6 @@ Depends:
 Suggests: 
     testthat,
 Imports: 
+    R6,
     purrr,
 Config/testthat/edition: 3

@@ -24,11 +24,12 @@ validate_input <- function(func){
         args_actual <- .extract_name_and_type(args = list(...))
 
         args <- merge(args_expected, args_actual, by = "name", suffixes = c(".expected", ".actual"))
-        for(i in seq_len(nrow(args))){
-            if(identical(args[i, "type.expected"], args[i, "type.actual"])) next
-            msg <- paste0(args[i, "name"], " is of type `", args[i, "type.actual"], "` rather than `", args[i, "type.expected"], "`!")
-            stop(msg)
-        }
+
+        for(i in seq_len(nrow(args))) ValidationError$new(
+            object = structure(NA_real_, class = args[i, "type.actual"]),
+            class = args[i, "type.expected"],
+            name = args[i, "name"]
+        )
 
         return(func(...))
     }
