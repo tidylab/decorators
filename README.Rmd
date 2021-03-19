@@ -33,6 +33,29 @@ status](https://github.com/tidylab/decorators/workflows/R-CMD-check/badge.svg)](
 `r read.dcf("DESCRIPTION", "Description")[[1]]`
 
 
+## Decorators Violate the Single-Responsibility Principle
+
+```{r child="vignettes/excerpts/single-responsibility-principle.Rmd"}
+```
+
+## Decorator Defenition
+
+> A decorator is a function that takes another function and extends the behavior of the latter function without explicitly modifying it.
+
+
+
+Reformulating the definition of a decorator we 
+
+1. A decorator receives a function and returns a function
+2. The original function and the decorated function are called in the same way
+3. The decoration alters the behaviour of the original function. The behaviour alternation may change: 
+    * The execution time of the function;
+    * The returned value/data-structure;
+    * The handling of unusual conditions, including errors and warnings. For
+    instance, converting a runtime error into an exception;
+    * 
+    * A combination of the above.
+
 ## Example: `time_it` decorator
 
 ```{r, echo=TRUE}
