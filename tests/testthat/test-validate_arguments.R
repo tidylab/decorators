@@ -35,3 +35,11 @@ describe("decorating a ValueObject with validate_arguments adds data type valida
         expect_error(Runner(athlete, birth_date = Sys.Date(), start_time = "xxx"), "start_time")
     })
 })
+
+describe("decorating a function with validate_arguments adds data type validation", {
+    it("built-in NA types", {
+        average_two_numbers <- function(a = NA_real_, b = NA_real_) mean(c(a, b))
+        expect_type(average_two_numbers <- decorators::validate_arguments(average_two_numbers), "closure")
+        expect_error(average_two_numbers(a = "1", b = "2"), "character")
+    })
+})

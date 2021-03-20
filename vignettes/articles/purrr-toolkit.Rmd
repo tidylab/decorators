@@ -1,0 +1,63 @@
+---
+title: "`purrr` Toolkit"
+bibliography: [../../inst/REFERENCES.bib]
+biblio-style: apalike
+link-citations: yes
+editor_options: 
+  markdown: 
+    wrap: 80
+---
+
+```{r, include = FALSE}
+source(file.path(usethis::proj_get(), "vignettes",  "_common.R"))
+```
+
+
+<!-- The [`purrr`](https://purrr.tidyverse.org/reference) package provides a set of functions that allows -->
+
+<!-- * Changing/setting default values of functions -->
+<!-- * Handling unexpected conditions -->
+<!-- * Altering the behaviour of a function -->
+
+## Example: failproof `sum()`
+
+The function `sum()` does one thing -- summing up a numeric vector.
+
+```{r, echo=TRUE}
+base::sum(1, 2, 3)
+```
+
+If the caller passes `sum()` non-numeric values then the function fails.
+
+```{r, echo=TRUE, eval=FALSE}
+base::sum(1, "2", 3)
+```
+```{r}
+print('Error in base::sum(1, "2", 3) : invalid \'type\' (character) of argument')
+```
+
+Using `purrr::compose`, `purrr::safely`, and `purrr::pluck`, we can make
+alternate the behaviour of `sum()` to produce NA instead of failing:
+
+```{r, echo=TRUE}
+# Decorating `sum` with failproof mechanism:
+# 1. Return NA when sum fails
+# 2. Extract the result
+sum <- purrr::safely(base::sum, otherwise = NA_real_)
+sum <- purrr::compose(sum, ~ purrr::pluck(.x, "result"), .dir = "forward") 
+```
+
+With the decorated `sum()` function, the behaviour for non-numeric values alters
+
+```{r, echo=TRUE}
+sum(1, 2, 3)
+sum(1, "2", 3)
+```
+
+The decorated `sum()` function is (a) failproof and (b) requires no changes in the codebase -- without it, a programmer would have encapsulated `sum()` instances with `tryCatch` statement
+such as this:
+
+```{r, echo=TRUE, eval=FALSE}
+tryCatch(sum(x), error = function(e) return(NA_real_))
+```
+
