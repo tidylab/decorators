@@ -4,7 +4,7 @@ Title: Extend the Behaviour of a Function without Explicitly Modifying it
 URL: https://tidylab.github.io/decorators/, https://github.com/tidylab/decorators
 BugReports: https://github.com/tidylab/decorators/issues
 Version: 0.1.0
-Date: 2021-02-15
+Date: 2021-03-15
 Authors@R: c(
     person("Harel", "Lustiger", email = "tidylab@gmail.com", role = c("aut", "cre"),
     comment = c(ORCID = "0000-0003-2953-9598")),
@@ -21,7 +21,7 @@ Description: A decorator is a function that receives a function, extends its
     console, and returns the original function's result. An example of the 
     second use is input type validation decorator that during running time 
     tests whether the caller has passed input arguments of a particular class.
-    Decorators can reduce execution time, say by `memoisation`, or reduce bugs 
+    Decorators can reduce execution time, say by memoization, or reduce bugs 
     by adding defensive programming routines.
 License: MIT + file LICENSE
 Encoding: UTF-8
