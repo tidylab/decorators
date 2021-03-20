@@ -12,18 +12,25 @@ status](https://github.com/tidylab/decorators/workflows/R-CMD-check/badge.svg)](
 
 ## Introduction
 
+<!-- Problem statement -->
+
 A decorator is a function that receives a function, extends its
 behaviour, and returned the altered function. Any caller that uses the
 decorated function uses the same interface as it were the original,
-undecorated function. Decorators serve two primary uses: (1) Enhancing
-the response of a function as it sends data to a second component; (2)
-Supporting multiple optional behaviours. An example of the first use is
-a timer decorator that runs a function, outputs its execution time on
-the console, and returns the original function’s result. An example of
-the second use is input type validation decorator that during running
+undecorated function.
+
+The `decorators` package provides information and decorators
+
+1.  Enhancing the response of a function as it sends data to a second
+    component; and
+2.  Supporting multiple optional behaviours.
+
+An example of the first use is a timer decorator that runs a function,
+returns the original function’s result and outputs its execution time on
+the console. An example of the second use is a decorator that during run
 time tests whether the caller has passed input arguments of a particular
-class. Decorators can reduce execution time, say by `memoisation`, or
-reduce bugs by adding defensive programming routines.
+class to the function. Decorators can reduce execution time, say by
+‘memoisation,’ or reduce bugs by adding defensive programming routines.
 
 ## Decorators Violate the Single-Responsibility Principle
 
@@ -92,6 +99,8 @@ Reformulating the definition of a decorator we
     -   
     -   A combination of the above.
 
+A common structure of decorators is
+
 ## Example: `time_it` decorator
 
     # Running the original Sys.sleep() produces no output
@@ -101,7 +110,7 @@ Reformulating the definition of a decorator we
     # and outputs the measurement   
     Sys.sleep <- decorators::time_it(base::Sys.sleep)
     Sys.sleep(0.1)
-    #> Time difference of 0.1 secs
+    #> Time difference of 0.11 secs
 
 ## Installation
 

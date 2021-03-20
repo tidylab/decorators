@@ -15,8 +15,8 @@ authors:
 # Articles ----------------------------------------------------------------
 articles:
 - title: ~
-  contents: ~
-#   - patterns/Singleton
+  contents:
+  - articles/decorator-underlying-mechanism
 #   - patterns/ValueObject
 #   - patterns/NullObject
 # - title: Object-Relational Patterns

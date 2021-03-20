@@ -30,7 +30,25 @@ status](https://github.com/tidylab/decorators/workflows/R-CMD-check/badge.svg)](
 
 ## Introduction
 
-`r read.dcf("DESCRIPTION", "Description")[[1]]`
+<!-- Problem statement -->
+
+
+
+A decorator is a function that receives a function, extends its behaviour, and
+returned the altered function. Any caller that uses the decorated function uses
+the same interface as it were the original, undecorated function.
+
+The `decorators` package provides information and decorators 
+
+(1) Enhancing the response of a function as it sends data to a second component; and
+(2) Supporting multiple optional behaviours. 
+
+An example of the first use is a timer decorator that runs a function, returns
+the original function’s result and outputs its execution time on the console. 
+An example of the second use is a decorator that during
+run time tests whether the caller has passed input arguments of a particular
+class to the function. Decorators can reduce execution time, say by 'memoisation', or reduce
+bugs by adding defensive programming routines.
 
 
 ## Decorators Violate the Single-Responsibility Principle
@@ -41,8 +59,6 @@ status](https://github.com/tidylab/decorators/workflows/R-CMD-check/badge.svg)](
 ## Decorator Defenition
 
 > A decorator is a function that takes another function and extends the behavior of the latter function without explicitly modifying it.
-
-
 
 Reformulating the definition of a decorator we 
 
@@ -55,6 +71,12 @@ Reformulating the definition of a decorator we
     instance, converting a runtime error into an exception;
     * 
     * A combination of the above.
+    
+A common structure of decorators is
+
+```{r, echo=TRUE, eval=FALSE}
+
+```
 
 ## Example: `time_it` decorator
 

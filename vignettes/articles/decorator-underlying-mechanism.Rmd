@@ -1,0 +1,113 @@
+---
+title: "Decorator Underlying Mechanism"
+bibliography: [../../inst/REFERENCES.bib]
+biblio-style: apalike
+link-citations: yes
+editor_options: 
+  markdown: 
+    wrap: 80
+---
+
+```{r, include = FALSE}
+source(file.path(usethis::proj_get(), "vignettes",  "_common.R"))
+```
+
+## Prerequisites
+
+Decorators use:
+
+* [Functions as objects](https://adv-r.hadley.nz/functions.html#first-class-functions)
+* Functions as return values
+* [Lexical scoping](https://adv-r.hadley.nz/functions.html#lexical-scoping)
+* [Closures](https://adv-r.hadley.nz/environments.html#function-environments)
+
+To fully understand decorators underlying mechanism, you should be familiar
+these topics.
+
+## How does a decorator look like?
+
+```{r, echo=TRUE}
+decorator_skeleton <- function(func){
+    # Define a new function that perform additional functionality before/after 
+    # calling the original function
+    wrapper <- function(...){
+        # (optional) Do something before
+        NULL
+        # Call the original function
+        result <- func(...)
+        # (optional) Do something after
+        NULL
+        # Return result
+        return(result)
+    }
+    
+    return(wrapper)
+}
+```
+
+Finally, we apply the decorator to a function (i.e. decorating) with
+
+```{r, echo=TRUE, eval=TRUE}
+sum <- decorator_skeleton(base::sum)
+class(sum)
+```
+
+## Step-by-step example
+
+In this example, we create a basic version for `decorators::time_it`. Recall, the
+`time_it` decorator measures and displays the execution time of a function.
+
+Step 1: Return the original function
+
+```{r, echo=TRUE, eval=FALSE}
+time_it <- function(func){
+    return(func)
+}
+```
+
+Step 2: Wrap the original function and return it (unmodified) 
+
+```{r, echo=TRUE, eval=FALSE}
+time_it <- function(func){
+    
+    wrapper <- function(...){
+        return(func(...))
+    }
+    
+    return(wrapper)
+}
+```
+
+Step 3: Wrap the original function, modify it and return it
+
+```{r, echo=TRUE, eval=TRUE}
+time_it <- function(func){
+    
+    wrapper <- function(...){
+        start_time <- Sys.time()
+        
+        result <- func(...)
+        
+        end_time <- Sys.time()
+        
+        print(difftime(end_time, start_time))
+        
+        return(result)
+    }
+    
+    return(wrapper)
+}
+```
+
+Finally, we demonstrate `time_it` by decorating the `sum` function
+
+```{r, echo=TRUE, eval=TRUE}
+## Before: sum() reports only the sum of its input
+sum(1:3)
+
+## Decorating sum with time_it 
+sum <- time_it(base::sum)
+
+## After: sum() reports both the sum of its input and the function's run time 
+sum(1:3)
+```
