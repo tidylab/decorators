@@ -17,8 +17,6 @@ undecorated function.
 
 ## Examples
 
-The `decorators` package includes decorators:
-
 ### `time_it` decorator
 
     # Running the original Sys.sleep() produces no output
@@ -28,7 +26,7 @@ The `decorators` package includes decorators:
     # and outputs the measurement   
     Sys.sleep <- decorators::time_it(base::Sys.sleep)
     Sys.sleep(0.1)
-    #> Time difference of 0.1 secs
+    #> Time difference of 0.11 secs
 
 ### `validate_arguments` decorator
 

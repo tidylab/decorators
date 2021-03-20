@@ -34,8 +34,6 @@ the same interface as it were the original, undecorated function.
 
 ## Examples
 
-The `decorators` package includes decorators:  
-
 ### `time_it` decorator
 
 ```{r, echo=TRUE}
