@@ -3,7 +3,11 @@ pkgdown: 1.6.1
 pkgdown_sha: ~
 articles:
   article_template: article_template.html
-last_built: 2021-02-27T08:57Z
+  articles/decorator-underlying-mechanism: decorator-underlying-mechanism.html
+  articles/purrr-toolkit: purrr-toolkit.html
+  details/validate_arguments: validate_arguments.html
+  excerpts/single-responsibility-principle: single-responsibility-principle.html
+last_built: 2021-03-20T05:55Z
 urls:
   reference: https://tidylab.github.io/decorators//reference
   article: https://tidylab.github.io/decorators//articles

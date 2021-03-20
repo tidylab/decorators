@@ -4,15 +4,30 @@
     <loc>https://tidylab.github.io/decorators//index.html</loc>
   </url>
   <url>
+    <loc>https://tidylab.github.io/decorators//reference/NA_x_.html</loc>
+  </url>
+  <url>
     <loc>https://tidylab.github.io/decorators//reference/pipe.html</loc>
   </url>
   <url>
     <loc>https://tidylab.github.io/decorators//reference/time_it.html</loc>
   </url>
   <url>
-    <loc>https://tidylab.github.io/decorators//reference/validate_input.html</loc>
+    <loc>https://tidylab.github.io/decorators//reference/validate_arguments.html</loc>
   </url>
   <url>
     <loc>https://tidylab.github.io/decorators//articles/article_template.html</loc>
+  </url>
+  <url>
+    <loc>https://tidylab.github.io/decorators//articles/articles/decorator-underlying-mechanism.html</loc>
+  </url>
+  <url>
+    <loc>https://tidylab.github.io/decorators//articles/articles/purrr-toolkit.html</loc>
+  </url>
+  <url>
+    <loc>https://tidylab.github.io/decorators//articles/details/validate_arguments.html</loc>
+  </url>
+  <url>
+    <loc>https://tidylab.github.io/decorators//articles/excerpts/single-responsibility-principle.html</loc>
   </url>
 </urlset>

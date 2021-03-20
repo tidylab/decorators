@@ -48,7 +48,7 @@
       </button>
       <span class="navbar-brand">
         <a class="navbar-link" href="index.html">Decorators in R</a>
-        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="Released version">0.2.0</span>
+        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="Released version">0.1.0</span>
       </span>
     </div>
 
@@ -63,17 +63,8 @@
 <li>
   <a href="reference/index.html">Reference</a>
 </li>
-<li class="dropdown">
-  <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">
-    Articles
-     
-    <span class="caret"></span>
-  </a>
-  <ul class="dropdown-menu" role="menu">
 <li>
-      <a href="articles/article_template.html">Article Template</a>
-    </li>
-  </ul>
+  <a href="articles/index.html">Articles</a>
 </li>
 <li>
   <a href="news/index.html">Changelog</a>
@@ -105,14 +96,14 @@
 <!-- badges: start -->
 
 <!-- badges: end -->
-<div id="introduction" class="section level2">
+<p>A <strong><em>decorator</em></strong> is a function that receives a function, extends its behaviour, and returned the altered function. Any caller that uses the decorated function uses the same interface as it were the original, undecorated function.</p>
+<div id="examples" class="section level2">
 <h2 class="hasAnchor">
-<a href="#introduction" class="anchor"></a>Introduction</h2>
-<p>A decorator is a function that receives a function, extends its behaviour, and returned the altered function. Any caller that uses the decorated function uses the same interface as it were the original, undecorated function. Decorators serve two primary uses: (1) Enhancing the response of a function as it sends data to a second component; (2) Supporting multiple optional behaviours. An example of the first use is a timer decorator that runs a function, outputs its execution time on the console, and returns the original function’s result. An example of the second use is input type validation decorator that during running time tests whether the caller has passed input arguments of a particular class. Decorators can reduce execution time, say by <code>memoisation</code>, or reduce bugs by adding defensive programming routines.</p>
-</div>
-<div id="example-time_it-decorator" class="section level2">
-<h2 class="hasAnchor">
-<a href="#example-time_it-decorator" class="anchor"></a>Example: <code>time_it</code> decorator</h2>
+<a href="#examples" class="anchor"></a>Examples</h2>
+<p>The <code>decorators</code> package includes decorators:</p>
+<div id="time_it-decorator" class="section level3">
+<h3 class="hasAnchor">
+<a href="#time_it-decorator" class="anchor"></a><code>time_it</code> decorator</h3>
 <div class="sourceCode" id="cb1"><pre class="sourceCode R"><code class="sourceCode r"><span id="cb1-1"><a href="#cb1-1"></a><span class="co"># Running the original Sys.sleep() produces no output</span></span>
 <span id="cb1-2"><a href="#cb1-2"></a><span class="kw">Sys.sleep</span>(<span class="fl">0.1</span>)</span>
 <span id="cb1-3"><a href="#cb1-3"></a></span>
@@ -120,16 +111,36 @@
 <span id="cb1-5"><a href="#cb1-5"></a><span class="co"># and outputs the measurement   </span></span>
 <span id="cb1-6"><a href="#cb1-6"></a>Sys.sleep &lt;-<span class="st"> </span>decorators<span class="op">::</span><span class="kw">time_it</span>(base<span class="op">::</span>Sys.sleep)</span>
 <span id="cb1-7"><a href="#cb1-7"></a><span class="kw">Sys.sleep</span>(<span class="fl">0.1</span>)</span>
-<span id="cb1-8"><a href="#cb1-8"></a><span class="co">#&gt; Time difference of 0.1003921 secs</span></span></code></pre></div>
+<span id="cb1-8"><a href="#cb1-8"></a><span class="co">#&gt; Time difference of 0.1 secs</span></span></code></pre></div>
+</div>
+<div id="validate_arguments-decorator" class="section level3">
+<h3 class="hasAnchor">
+<a href="#validate_arguments-decorator" class="anchor"></a><code>validate_arguments</code> decorator</h3>
+<div class="sourceCode" id="cb2"><pre class="sourceCode R"><code class="sourceCode r"><span id="cb2-1"><a href="#cb2-1"></a><span class="co">## Define a functions that averages two numbers</span></span>
+<span id="cb2-2"><a href="#cb2-2"></a>average_two_numbers &lt;-<span class="st"> </span><span class="cf">function</span>(<span class="dt">a =</span> <span class="ot">NA_real_</span>, <span class="dt">b =</span> <span class="ot">NA_real_</span>) <span class="kw">mean</span>(<span class="kw">c</span>(a, b))</span>
+<span id="cb2-3"><a href="#cb2-3"></a></span>
+<span id="cb2-4"><a href="#cb2-4"></a><span class="co">## Before: Averaging two nun-numeric values returns NA and prompts a warning</span></span>
+<span id="cb2-5"><a href="#cb2-5"></a><span class="kw">average_two_numbers</span>(<span class="dt">a =</span> <span class="st">"1"</span>, <span class="dt">b =</span> <span class="st">"2"</span>)</span>
+<span id="cb2-6"><a href="#cb2-6"></a><span class="co">#&gt; [1] NA</span></span>
+<span id="cb2-7"><a href="#cb2-7"></a></span>
+<span id="cb2-8"><a href="#cb2-8"></a><span class="co">## Decorating average_two_numbers() with validate_arguments() checks input types</span></span>
+<span id="cb2-9"><a href="#cb2-9"></a>average_two_numbers &lt;-<span class="st"> </span>decorators<span class="op">::</span><span class="kw">validate_arguments</span>(average_two_numbers)</span>
+<span id="cb2-10"><a href="#cb2-10"></a></span>
+<span id="cb2-11"><a href="#cb2-11"></a><span class="co">## After: Averaging two nun-numeric prompts an informative error</span></span>
+<span id="cb2-12"><a href="#cb2-12"></a><span class="kw">average_two_numbers</span>(<span class="dt">a =</span> <span class="st">"1"</span>, <span class="dt">b =</span> <span class="st">"2"</span>)</span>
+<span id="cb2-13"><a href="#cb2-13"></a></span>
+<span id="cb2-14"><a href="#cb2-14"></a><span class="co">#&gt; Error in average_two_numbers(a = "1", b = "2") : </span></span>
+<span id="cb2-15"><a href="#cb2-15"></a><span class="co">#&gt;   a is of type `character` rather than `numeric`!</span></span></code></pre></div>
+</div>
 </div>
 <div id="installation" class="section level2">
 <h2 class="hasAnchor">
 <a href="#installation" class="anchor"></a>Installation</h2>
 <p>You can install the released version of <code>decorators</code> from CRAN with:</p>
-<div class="sourceCode" id="cb2"><pre class="sourceCode R"><code class="sourceCode r"><span id="cb2-1"><a href="#cb2-1"></a><span class="kw">install.packages</span>(<span class="st">"decorators"</span>)</span></code></pre></div>
+<div class="sourceCode" id="cb3"><pre class="sourceCode R"><code class="sourceCode r"><span id="cb3-1"><a href="#cb3-1"></a><span class="kw">install.packages</span>(<span class="st">"decorators"</span>)</span></code></pre></div>
 <p>And the development version from GitHub with:</p>
-<div class="sourceCode" id="cb3"><pre class="sourceCode R"><code class="sourceCode r"><span id="cb3-1"><a href="#cb3-1"></a><span class="co"># install.packages("devtools")</span></span>
-<span id="cb3-2"><a href="#cb3-2"></a>devtools<span class="op">::</span><span class="kw">install_github</span>(<span class="st">"tidylab/decorators"</span>)</span></code></pre></div>
+<div class="sourceCode" id="cb4"><pre class="sourceCode R"><code class="sourceCode r"><span id="cb4-1"><a href="#cb4-1"></a><span class="co"># install.packages("devtools")</span></span>
+<span id="cb4-2"><a href="#cb4-2"></a>devtools<span class="op">::</span><span class="kw">install_github</span>(<span class="st">"tidylab/decorators"</span>)</span></code></pre></div>
 </div>
 </div>
   </div>
