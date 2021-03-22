@@ -3,5 +3,9 @@
 ## New Decorators
 
 -   `time_it` 
--   `dataclass` 
+-   `validate_arguments` 
 
+## New Utiliy
+
+-   `NA_Date_`
+-   `NA_POSIXct_` 

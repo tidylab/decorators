@@ -1,0 +1,58 @@
+---
+title: "Decorators Violate the Single-Responsibility Principle"
+editor_options: 
+  markdown: 
+    wrap: 80
+---
+
+```{r, include = FALSE}
+source(file.path(usethis::proj_get(), "vignettes",  "_common.R"))
+```
+
+> Functions should do one thing. They should do it well. They should do it only.
+
+The function `sum()` does one thing -- summing up a numeric vector.
+
+```{r, echo=TRUE}
+base::sum(1, 2, 3)
+```
+
+If the caller passes `sum()` non-numeric values then the function fails.
+
+```{r, echo=TRUE, eval=FALSE}
+base::sum(1, "2", 3)
+```
+```{r}
+print('Error in base::sum(1, "2", 3) : invalid \'type\' (character) of argument')
+```
+
+An example of a Single-Responsibility Principle (SRP) violation, happens when
+a programmer adds the responsibility of error handling to the `sum` function:
+
+```{r, echo=TRUE}
+# Decorating `sum` with failproof mechanism:
+# 1. Return NA when sum fails
+# 2. Extract the result
+sum <- purrr::safely(base::sum, otherwise = NA_real_)
+sum <- purrr::compose(sum, ~ purrr::pluck(.x, "result"), .dir = "forward") 
+```
+
+With the decorated `sum()` function, the behaviour for non-numeric values alters
+
+```{r, echo=TRUE}
+sum(1, 2, 3)
+sum(1, "2", 3)
+```
+
+The decorated `sum()` function violates Single-Responsibility Principle.
+Nevertheless, its failproof quality is desirable in production systems. This is
+because:
+
+a) Production system should be failure safe; and
+b) The decorated function requires no changes in the codebase. Without it, a
+programmer would have encapsulated `sum()` instances with `tryCatch` statement
+such as this:
+
+```{r, echo=TRUE, eval=FALSE}
+tryCatch(sum(x), error = function(e) return(NA_real_))
+```

@@ -1,0 +1,51 @@
+---
+title: "Validate Input"
+editor_options: 
+  markdown: 
+    wrap: 80
+---
+
+```{r, include = FALSE}
+source(file.path(usethis::proj_get(), "vignettes",  "_common.R"))
+```
+
+<!-- One line about what the function does -->
+
+`validate_arguments` decorator allows the arguments passed to a function to be
+parsed and validated using the function's annotations before the function is
+called.
+
+## How It Works
+
+`validate_arguments` provides an extremely easy way to apply validation to your
+code with minimal boilerplate. The original function needs to have key-value
+pairs in its declaration, where the each value carries its designated class.
+
+## When to Use It
+
+* To protect functions from receiving unexpected types of input arguments. 
+* In [`ValueObjects`](https://tidylab.github.io/R6P/reference/ValueObject.html). 
+
+## Examples: Functions with Built-in NA classes
+
+Given a `Customer` [`ValueObject`](https://tidylab.github.io/R6P/reference/ValueObject.html)
+
+```{r, echo=TRUE}
+Customer <- function(given = NA_character_, family = NA_character_)
+    return(data.frame(given = given, family = family))
+```
+
+When `Customer` is decorated with `validate_arguments`
+
+```{r, echo=TRUE}
+Customer <- validate_arguments(Customer)
+```
+
+Then passing arguments of any type other then the declared type prompts an informative error.
+
+In the `Customer` example, both input arguments `given` and `family` are declared as `character`. 
+
+```{r, echo=TRUE}
+Customer(given = "Bilbo", family = "Baggins") # Works as both arguments are character
+try(Customer(given = "Bilbo", family = 90201)) # Fails because family is not a character
+```
