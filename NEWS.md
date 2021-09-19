@@ -2,7 +2,7 @@
 
 ## New Decorators
 
-- `compose_decorator`
+- ?
 
 ---
 
