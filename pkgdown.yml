@@ -1,14 +1,14 @@
 pandoc: 2.7.3
-pkgdown: 1.6.1
+pkgdown: 2.0.6
 pkgdown_sha: ~
 articles:
   article_template: article_template.html
-  articles/decorator-underlying-mechanism: decorator-underlying-mechanism.html
-  articles/purrr-toolkit: purrr-toolkit.html
-  details/validate_arguments: validate_arguments.html
-  excerpts/single-responsibility-principle: single-responsibility-principle.html
-last_built: 2021-03-22T18:16Z
+  decorator-underlying-mechanism: decorator-underlying-mechanism.html
+  purrr-toolkit: purrr-toolkit.html
+  validate_arguments: details/validate_arguments.html
+  single-responsibility-principle: excerpts/single-responsibility-principle.html
+last_built: 2022-09-30T15:21Z
 urls:
-  reference: https://tidylab.github.io/decorators//reference
-  article: https://tidylab.github.io/decorators//articles
+  reference: https://tidylab.github.io/decorators/reference
+  article: https://tidylab.github.io/decorators/articles
 

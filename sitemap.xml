@@ -1,33 +1,48 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   <url>
-    <loc>https://tidylab.github.io/decorators//index.html</loc>
+    <loc>https://tidylab.github.io/decorators/404.html</loc>
   </url>
   <url>
-    <loc>https://tidylab.github.io/decorators//reference/NA_x_.html</loc>
+    <loc>https://tidylab.github.io/decorators/LICENSE-text.html</loc>
   </url>
   <url>
-    <loc>https://tidylab.github.io/decorators//reference/pipe.html</loc>
+    <loc>https://tidylab.github.io/decorators/articles/article_template.html</loc>
   </url>
   <url>
-    <loc>https://tidylab.github.io/decorators//reference/time_it.html</loc>
+    <loc>https://tidylab.github.io/decorators/articles/decorator-underlying-mechanism.html</loc>
   </url>
   <url>
-    <loc>https://tidylab.github.io/decorators//reference/validate_arguments.html</loc>
+    <loc>https://tidylab.github.io/decorators/articles/details/validate_arguments.html</loc>
   </url>
   <url>
-    <loc>https://tidylab.github.io/decorators//articles/article_template.html</loc>
+    <loc>https://tidylab.github.io/decorators/articles/excerpts/single-responsibility-principle.html</loc>
   </url>
   <url>
-    <loc>https://tidylab.github.io/decorators//articles/articles/decorator-underlying-mechanism.html</loc>
+    <loc>https://tidylab.github.io/decorators/articles/index.html</loc>
   </url>
   <url>
-    <loc>https://tidylab.github.io/decorators//articles/articles/purrr-toolkit.html</loc>
+    <loc>https://tidylab.github.io/decorators/articles/purrr-toolkit.html</loc>
   </url>
   <url>
-    <loc>https://tidylab.github.io/decorators//articles/details/validate_arguments.html</loc>
+    <loc>https://tidylab.github.io/decorators/authors.html</loc>
   </url>
   <url>
-    <loc>https://tidylab.github.io/decorators//articles/excerpts/single-responsibility-principle.html</loc>
+    <loc>https://tidylab.github.io/decorators/index.html</loc>
+  </url>
+  <url>
+    <loc>https://tidylab.github.io/decorators/news/index.html</loc>
+  </url>
+  <url>
+    <loc>https://tidylab.github.io/decorators/reference/index.html</loc>
+  </url>
+  <url>
+    <loc>https://tidylab.github.io/decorators/reference/pipe.html</loc>
+  </url>
+  <url>
+    <loc>https://tidylab.github.io/decorators/reference/time_it.html</loc>
+  </url>
+  <url>
+    <loc>https://tidylab.github.io/decorators/reference/validate_arguments.html</loc>
   </url>
 </urlset>

@@ -18,24 +18,27 @@
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.12.1/css/v4-shims.min.css" integrity="sha256-wZjR52fzng1pJHwx4aV2AO3yyTOXrcDW7jBpJtTwVxw=" crossorigin="anonymous">
 <!-- clipboard.js --><script src="https://cdnjs.cloudflare.com/ajax/libs/clipboard.js/2.0.6/clipboard.min.js" integrity="sha256-inc5kl9MA1hkeYUt+EC3BhlIgyp/2jDIyBLS6k3UxPI=" crossorigin="anonymous"></script><!-- headroom.js --><script src="https://cdnjs.cloudflare.com/ajax/libs/headroom/0.11.0/headroom.min.js" integrity="sha256-AsUX4SJE1+yuDu5+mAVzJbuYNPHj/WroHuZ8Ir/CkE0=" crossorigin="anonymous"></script><script src="https://cdnjs.cloudflare.com/ajax/libs/headroom/0.11.0/jQuery.headroom.min.js" integrity="sha256-ZX/yNShbjqsohH1k95liqY9Gd8uOiE1S4vZc+9KQ1K4=" crossorigin="anonymous"></script><!-- pkgdown --><link href="pkgdown.css" rel="stylesheet">
 <script src="pkgdown.js"></script><meta property="og:title" content="Extend the Behaviour of a Function without Explicitly Modifying it">
-<meta property="og:description" content="A decorator is a function that receives a function, extends its 
-    behaviour, and returned the altered function. Any caller that uses the 
-    decorated function uses the same interface as it were the original, 
-    undecorated function. Decorators serve two primary uses: (1) Enhancing the 
-    response of a function as it sends data to a second component; (2) 
-    Supporting multiple optional behaviours. An example of the first use is a 
-    timer decorator that runs a function, outputs its execution time on the 
-    console, and returns the original function's result. An example of the 
-    second use is input type validation decorator that during running time 
-    tests whether the caller has passed input arguments of a particular class.
-    Decorators can reduce execution time, say by memoization, or reduce bugs 
-    by adding defensive programming routines.">
+<meta property="og:description" content="A decorator is a function that receives a function, extends
+    its behaviour, and returned the altered function. Any caller that uses
+    the decorated function uses the same interface as it were the
+    original, undecorated function. Decorators serve two primary uses: (1)
+    Enhancing the response of a function as it sends data to a second
+    component; (2) Supporting multiple optional behaviours. An example of
+    the first use is a timer decorator that runs a function, outputs its
+    execution time on the console, and returns the original function's
+    result. An example of the second use is input type validation
+    decorator that during running time tests whether the caller has passed
+    input arguments of a particular class.  Decorators can reduce
+    execution time, say by memoization, or reduce bugs by adding defensive
+    programming routines.">
 <!-- mathjax --><script src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.5/MathJax.js" integrity="sha256-nvJJv9wWKEm88qvoQl9ekL2J+k/RWIsaSScxxlsrv8k=" crossorigin="anonymous"></script><script src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.5/config/TeX-AMS-MML_HTMLorMML.js" integrity="sha256-84DKXVJXs0/F8OTMzX4UR909+jtl4G7SPypPavF+GfA=" crossorigin="anonymous"></script><!--[if lt IE 9]>
 <script src="https://oss.maxcdn.com/html5shiv/3.7.3/html5shiv.min.js"></script>
 <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
 <![endif]-->
 </head>
 <body data-spy="scroll" data-target="#toc">
+    
+
     <div class="container template-home">
       <header><div class="navbar navbar-default navbar-fixed-top" role="navigation">
   <div class="container">
@@ -48,23 +51,38 @@
       </button>
       <span class="navbar-brand">
         <a class="navbar-link" href="index.html">Decorators in R</a>
-        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="Released version">0.1.0</span>
+        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="">0.3.0</span>
       </span>
     </div>
 
     <div id="navbar" class="navbar-collapse collapse">
       <ul class="nav navbar-nav">
 <li>
-  <a href="index.html">
-    <span class="fas fa-home fa-lg"></span>
-     
-  </a>
-</li>
-<li>
   <a href="reference/index.html">Reference</a>
 </li>
+<li class="dropdown">
+  <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+    Articles
+     
+    <span class="caret"></span>
+  </a>
+  <ul class="dropdown-menu" role="menu">
 <li>
-  <a href="articles/index.html">Articles</a>
+      <a href="articles/article_template.html">Article Template</a>
+    </li>
+    <li>
+      <a href="articles/decorator-underlying-mechanism.html">Decorator Underlying Mechanism</a>
+    </li>
+    <li>
+      <a href="articles/purrr-toolkit.html">`purrr` Toolkit</a>
+    </li>
+    <li>
+      <a href="articles/details/validate_arguments.html">Validate Input</a>
+    </li>
+    <li>
+      <a href="articles/excerpts/single-responsibility-principle.html">Decorators Violate the Single-Responsibility Principle</a>
+    </li>
+  </ul>
 </li>
 <li>
   <a href="news/index.html">Changelog</a>
@@ -72,7 +90,7 @@
       </ul>
 <ul class="nav navbar-nav navbar-right">
 <li>
-  <a href="https://github.com/tidylab/decorators/">
+  <a href="https://github.com/tidylab/decorators/" class="external-link">
     <span class="fab fa-github fa-lg"></span>
      
   </a>
@@ -89,20 +107,19 @@
 
       </header><div class="row">
   <div class="contents col-md-9">
-<div id="decorators-" class="section level1">
-<div class="page-header"><h1 class="hasAnchor">
-<a href="#decorators-" class="anchor"></a><code>decorators</code> <img src="https://raw.githubusercontent.com/tidylab/decorators/master/pkgdown/logo.png" align="right" height="75">
+<div class="section level1">
+<div class="page-header"><h1 id="decorators-">
+<code>decorators</code> <img src="https://raw.githubusercontent.com/tidylab/decorators/master/pkgdown/logo.png" align="right" height="75"><a class="anchor" aria-label="anchor" href="#decorators-"></a>
 </h1></div>
 <!-- badges: start -->
-
-<!-- badges: end -->
-<p>A <strong><em>decorator</em></strong> is a function that receives a function, extends its behaviour, and returned the altered function. Any caller that uses the decorated function uses the same interface as it were the original, undecorated function.</p>
-<div id="examples" class="section level2">
-<h2 class="hasAnchor">
-<a href="#examples" class="anchor"></a>Examples</h2>
-<div id="time_it-decorator" class="section level3">
-<h3 class="hasAnchor">
-<a href="#time_it-decorator" class="anchor"></a><code>time_it</code> decorator</h3>
+<!-- badges: end --><p>A <strong><em>decorator</em></strong> is a function that receives a function, extends its behaviour, and returned the altered function. Any caller that uses the decorated function uses the same interface as it were the original, undecorated function.</p>
+<div class="section level2">
+<h2 id="examples">Examples<a class="anchor" aria-label="anchor" href="#examples"></a>
+</h2>
+<div class="section level3">
+<h3 id="time_it-decorator">
+<code>time_it</code> decorator<a class="anchor" aria-label="anchor" href="#time_it-decorator"></a>
+</h3>
 <div class="sourceCode" id="cb1"><pre class="sourceCode R"><code class="sourceCode r"><span id="cb1-1"><a href="#cb1-1"></a><span class="co"># Running the original Sys.sleep() produces no output</span></span>
 <span id="cb1-2"><a href="#cb1-2"></a><span class="kw">Sys.sleep</span>(<span class="fl">0.1</span>)</span>
 <span id="cb1-3"><a href="#cb1-3"></a></span>
@@ -110,11 +127,12 @@
 <span id="cb1-5"><a href="#cb1-5"></a><span class="co"># and outputs the measurement   </span></span>
 <span id="cb1-6"><a href="#cb1-6"></a>Sys.sleep &lt;-<span class="st"> </span>decorators<span class="op">::</span><span class="kw">time_it</span>(base<span class="op">::</span>Sys.sleep)</span>
 <span id="cb1-7"><a href="#cb1-7"></a><span class="kw">Sys.sleep</span>(<span class="fl">0.1</span>)</span>
-<span id="cb1-8"><a href="#cb1-8"></a><span class="co">#&gt; Time difference of 0.15 secs</span></span></code></pre></div>
+<span id="cb1-8"><a href="#cb1-8"></a><span class="co">#&gt; Time difference of 0.11 secs</span></span></code></pre></div>
 </div>
-<div id="validate_arguments-decorator" class="section level3">
-<h3 class="hasAnchor">
-<a href="#validate_arguments-decorator" class="anchor"></a><code>validate_arguments</code> decorator</h3>
+<div class="section level3">
+<h3 id="validate_arguments-decorator">
+<code>validate_arguments</code> decorator<a class="anchor" aria-label="anchor" href="#validate_arguments-decorator"></a>
+</h3>
 <div class="sourceCode" id="cb2"><pre class="sourceCode R"><code class="sourceCode r"><span id="cb2-1"><a href="#cb2-1"></a><span class="co">## Define a functions that averages two numbers</span></span>
 <span id="cb2-2"><a href="#cb2-2"></a>average_two_numbers &lt;-<span class="st"> </span><span class="cf">function</span>(<span class="dt">a =</span> <span class="ot">NA_real_</span>, <span class="dt">b =</span> <span class="ot">NA_real_</span>) <span class="kw">mean</span>(<span class="kw">c</span>(a, b))</span>
 <span id="cb2-3"><a href="#cb2-3"></a></span>
@@ -132,9 +150,9 @@
 <span id="cb2-15"><a href="#cb2-15"></a><span class="co">#&gt;   a is of type `character` rather than `numeric`!</span></span></code></pre></div>
 </div>
 </div>
-<div id="installation" class="section level2">
-<h2 class="hasAnchor">
-<a href="#installation" class="anchor"></a>Installation</h2>
+<div class="section level2">
+<h2 id="installation">Installation<a class="anchor" aria-label="anchor" href="#installation"></a>
+</h2>
 <p>You can install the released version of <code>decorators</code> from CRAN with:</p>
 <div class="sourceCode" id="cb3"><pre class="sourceCode R"><code class="sourceCode r"><span id="cb3-1"><a href="#cb3-1"></a><span class="kw">install.packages</span>(<span class="st">"decorators"</span>)</span></code></pre></div>
 <p>And the development version from GitHub with:</p>
@@ -146,58 +164,62 @@
 
   <div class="col-md-3 hidden-xs hidden-sm" id="pkgdown-sidebar">
     <div class="links">
-<h2>Links</h2>
+<h2 data-toc-skip>Links</h2>
 <ul class="list-unstyled">
-<li>Download from CRAN at <br><a href="https://cloud.r-project.org/package=decorators">https://​cloud.r-project.org/​package=decorators</a>
-</li>
-<li>Browse source code at <br><a href="https://github.com/tidylab/decorators/">https://​github.com/​tidylab/​decorators/​</a>
-</li>
-<li>Report a bug at <br><a href="https://github.com/tidylab/decorators/issues">https://​github.com/​tidylab/​decorators/​issues</a>
-</li>
-</ul>
-</div>
-<div class="license">
-<h2>License</h2>
-<ul class="list-unstyled">
-<li>
-<a href="https://opensource.org/licenses/mit-license.php">MIT</a> + file <a href="LICENSE-text.html">LICENSE</a>
-</li>
-</ul>
-</div>
-<div class="citation">
-<h2>Citation</h2>
-<ul class="list-unstyled">
-<li><a href="authors.html">Citing decorators</a></li>
-</ul>
-</div>
-<div class="developers">
-<h2>Developers</h2>
-<ul class="list-unstyled">
-<li>
-<a href="https://github.com/harell">Harel Lustiger</a> <br><small class="roles"> Author, maintainer </small> <a href="https://orcid.org/0000-0003-2953-9598" target="orcid.widget" aria-label="ORCID"><span class="fab fa-orcid orcid" aria-hidden="true"></span></a> </li>
-<li>
-<a href="https://github.com/tidylab"><img src="https://github.com/tidylab/tidylab/blob/master/favicon/apple-touch-icon-120x120.png?raw=true" height="24"></a> <br><small class="roles"> Copyright holder, funder </small>  </li>
+<li><a href="https://cloud.r-project.org/package=decorators" class="external-link">View on CRAN</a></li>
+<li><a href="https://github.com/tidylab/decorators/" class="external-link">Browse source code</a></li>
+<li><a href="https://github.com/tidylab/decorators/issues" class="external-link">Report a bug</a></li>
 </ul>
 </div>
 
-  <div class="dev-status">
-<h2>Dev status</h2>
+<div class="license">
+<h2 data-toc-skip>License</h2>
 <ul class="list-unstyled">
-<li><a href="https://CRAN.R-project.org/package=decorators"><img src="https://www.r-pkg.org/badges/version/decorators" alt="CRAN status"></a></li>
-<li><a href="https://github.com/tidylab/decorators/actions"><img src="https://github.com/tidylab/decorators/workflows/R-CMD-check/badge.svg" alt="R build status"></a></li>
-<li><a href="https://codecov.io/gh/tidylab/decorators"><img src="https://codecov.io/gh/tidylab/decorators/branch/master/graph/badge.svg?token=U6FL5N32FL" alt="codecov"></a></li>
+<li>
+<a href="https://opensource.org/licenses/mit-license.php" class="external-link">MIT</a> + file <a href="LICENSE-text.html">LICENSE</a>
+</li>
 </ul>
 </div>
+
+
+<div class="citation">
+<h2 data-toc-skip>Citation</h2>
+<ul class="list-unstyled">
+<li><a href="authors.html#citation">Citing decorators</a></li>
+</ul>
 </div>
+
+<div class="developers">
+<h2 data-toc-skip>Developers</h2>
+<ul class="list-unstyled">
+<li>
+<a href="https://github.com/harell" class="external-link">Harel Lustiger</a> <br><small class="roles"> Author, maintainer </small> <a href="https://orcid.org/0000-0003-2953-9598" target="orcid.widget" aria-label="ORCID" class="external-link"><span class="fab fa-orcid orcid" aria-hidden="true"></span></a> </li>
+<li>
+<a href="https://github.com/tidylab" class="external-link"><img src="https://github.com/tidylab/tidylab/blob/master/favicon/apple-touch-icon-120x120.png?raw=true" height="24"></a> <br><small class="roles"> Copyright holder, funder </small>  </li>
+</ul>
+</div>
+
+<div class="dev-status">
+<h2 data-toc-skip>Dev status</h2>
+<ul class="list-unstyled">
+<li><a href="https://CRAN.R-project.org/package=decorators" class="external-link"><img src="https://www.r-pkg.org/badges/version/decorators" alt="CRAN status"></a></li>
+<li><a href="https://github.com/tidylab/decorators/actions" class="external-link"><img src="https://github.com/tidylab/decorators/workflows/R-CMD-check/badge.svg" alt="R build status"></a></li>
+<li><a href="https://app.codecov.io/gh/tidylab/decorators" class="external-link"><img src="https://app.codecov.io/gh/tidylab/decorators/branch/master/graph/badge.svg?token=U6FL5N32FL" alt="codecov"></a></li>
+</ul>
+</div>
+
+  </div>
 </div>
 
 
       <footer><div class="copyright">
-  <p>Developed by <a href="https://github.com/harell">Harel Lustiger</a>, <a href="https://github.com/tidylab"><img src="https://github.com/tidylab/tidylab/blob/master/favicon/apple-touch-icon-120x120.png?raw=true" height="24"></a>.</p>
+  <p></p>
+<p>Developed by <a href="https://github.com/harell" class="external-link">Harel Lustiger</a>, <a href="https://github.com/tidylab" class="external-link"><img src="https://github.com/tidylab/tidylab/blob/master/favicon/apple-touch-icon-120x120.png?raw=true" height="24"></a>.</p>
 </div>
 
 <div class="pkgdown">
-  <p>Site built with <a href="https://pkgdown.r-lib.org/">pkgdown</a> 1.6.1.</p>
+  <p></p>
+<p>Site built with <a href="https://pkgdown.r-lib.org/" class="external-link">pkgdown</a> 2.0.6.</p>
 </div>
 
       </footer>
@@ -205,6 +227,8 @@
 
   
 
+
+  
 
   </body>
 </html>
