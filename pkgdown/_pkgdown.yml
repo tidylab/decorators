@@ -6,18 +6,13 @@ authors:
   Tidylab:
     href: "https://github.com/tidylab"
     html: "<img src='https://github.com/tidylab/tidylab/blob/master/favicon/apple-touch-icon-120x120.png?raw=true' height=24>"
-template:
-   params:
-     docsearch:
-       api_key: db4b11511760a264ee65c7252f56fbb4
-       index_name: decorators
 
 # Articles ----------------------------------------------------------------
-articles:
-- title: ~
-  contents:
-  - articles/decorator-underlying-mechanism
-  - articles/purrr-toolkit
+# articles:
+# - title: ~
+#   contents:
+#   - articles/decorator-underlying-mechanism
+#   - articles/purrr-toolkit
 #   - patterns/ValueObject
 #   - patterns/NullObject
 # - title: Object-Relational Patterns
