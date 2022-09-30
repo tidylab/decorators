@@ -15,7 +15,7 @@ editor_options:
 source(usethis::proj_path("vignettes",  "_common.R"))
 ```
 
-# `decorators` <img src="https://raw.githubusercontent.com/tidylab/decorators/master/pkgdown/logo.png" align="right" height="75"/>
+# `decorators` <img src="https://raw.githubusercontent.com/tidylab/decorators/master/pkgdown/logo.png" align="right" style="float:right; height:75px"/>
 
 <!-- badges: start -->
 
