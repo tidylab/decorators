@@ -8,6 +8,7 @@
 #' * \href{https://pydantic-docs.helpmanual.io/usage/validation_decorator/}{Similar Python module}
 #' * \href{http://adv-r.had.co.nz/Functional-programming.html}{Closures in R}
 #' @family defensive programming
+#' @importFrom methods is
 #' @export
 #' @examples
 #' Car <- function(model = NA_character_, hp = NA_real_){
@@ -42,12 +43,12 @@ validate_arguments <- function(func){
     dict <- data.frame(name = NA_character_, type = NA_character_)[0,]
 
     for(i in seq_along(args)){ # handle Value-Objects
-        if(class(args[[i]])[1] %in% "call"){
+        if(is(args[[i]], "call")){
             null_value <- eval(args[[i]])
-            if(class(null_value) != "list") null_value <- as.list(null_value)
+            if(!is(null_value, "list")) null_value <- as.list(null_value)
             new_entery <- .extract_name_and_type(null_value)
 
-        } else if (class(args[[i]])[1] %in% "name") { # handle type extensions
+        } else if (is(args[[i]], "name")) { # handle type extensions
             type <- gsub("NA_|_$", "", as.character(args[[i]]))
             new_entery <- data.frame(name = names(args)[i], type = type)
 
