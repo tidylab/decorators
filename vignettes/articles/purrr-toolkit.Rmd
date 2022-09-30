@@ -36,8 +36,8 @@ base::sum(1, "2", 3)
 print('Error in base::sum(1, "2", 3) : invalid \'type\' (character) of argument')
 ```
 
-Using `purrr::compose`, `purrr::safely`, and `purrr::pluck`, we can make
-alternate the behaviour of `sum()` to produce NA instead of failing:
+Using `purrr::compose`, `purrr::safely`, and `purrr::pluck`, we can alternate
+the behaviour of `sum()` to produce NA instead of failing:
 
 ```{r, echo=TRUE}
 # Decorating `sum` with failproof mechanism:

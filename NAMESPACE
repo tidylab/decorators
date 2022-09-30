@@ -2,9 +2,8 @@
 
 export("%>%")
 export("%||%")
-export(NA_Date_)
-export(NA_POSIXct_)
 export(time_it)
 export(validate_arguments)
+importFrom(methods,is)
 importFrom(purrr,"%>%")
 importFrom(purrr,"%||%")
