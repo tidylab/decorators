@@ -7,7 +7,7 @@
 status](https://www.r-pkg.org/badges/version/decorators)](https://CRAN.R-project.org/package=decorators)
 [![R build
 status](https://github.com/tidylab/decorators/workflows/R-CMD-check/badge.svg)](https://github.com/tidylab/decorators/actions)
-[![codecov](https://app.codecov.io/gh/tidylab/decorators/branch/master/graph/badge.svg?token=U6FL5N32FL)](https://app.codecov.io/gh/tidylab/decorators)
+[![codecov](https://codecov.io/gh/tidylab/decorators/branch/master/graph/badge.svg?token=aVUPn6uUnS)](https://codecov.io/gh/tidylab/decorators)
 
 <!-- badges: end -->
 
