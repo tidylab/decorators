@@ -13,6 +13,7 @@
 ^codecov\.yml$
 ^cran-comments\.md$
 ^CRAN-RELEASE$
+^CRAN-SUBMISSION$
 ^README\.Rmd$
 ^LICENSE\.md$
 ^vignettes/_common.R$
@@ -27,3 +28,4 @@
 
 
 
+^CRAN-SUBMISSION$

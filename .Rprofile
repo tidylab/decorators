@@ -3,7 +3,7 @@ assign(".Rprofile", new.env(), envir = globalenv())
 # .First ------------------------------------------------------------------
 .First <- function(){
     try(if(testthat::is_testing()) return())
-    try(readRenviron(".Renviron"), silent = TRUE)
+    if(file.exists(".Renviron")) readRenviron(".Renviron")
 
     # Package Management System
     Date <- as.character(read.dcf("DESCRIPTION", "Date"));

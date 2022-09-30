@@ -1,8 +1,7 @@
-# decorators 0.2.0
+# decorators 0.3.0
 
-## New Decorators
-
-- ?
+- Update infrastructure
+- Clean up package
 
 ---
 
