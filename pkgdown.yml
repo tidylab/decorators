@@ -7,7 +7,7 @@ articles:
   purrr-toolkit: purrr-toolkit.html
   validate_arguments: details/validate_arguments.html
   single-responsibility-principle: excerpts/single-responsibility-principle.html
-last_built: 2022-09-30T15:21Z
+last_built: 2022-09-30T15:42Z
 urls:
   reference: https://tidylab.github.io/decorators/reference
   article: https://tidylab.github.io/decorators/articles

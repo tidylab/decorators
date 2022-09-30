@@ -109,7 +109,7 @@
   <div class="contents col-md-9">
 <div class="section level1">
 <div class="page-header"><h1 id="decorators-">
-<code>decorators</code> <img src="https://raw.githubusercontent.com/tidylab/decorators/master/pkgdown/logo.png" align="right" height="75"><a class="anchor" aria-label="anchor" href="#decorators-"></a>
+<code>decorators</code> <img src="https://raw.githubusercontent.com/tidylab/decorators/master/pkgdown/logo.png" align="right" style="float:right; height:75px"><a class="anchor" aria-label="anchor" href="#decorators-"></a>
 </h1></div>
 <!-- badges: start -->
 <!-- badges: end --><p>A <strong><em>decorator</em></strong> is a function that receives a function, extends its behaviour, and returned the altered function. Any caller that uses the decorated function uses the same interface as it were the original, undecorated function.</p>
@@ -127,7 +127,7 @@
 <span id="cb1-5"><a href="#cb1-5"></a><span class="co"># and outputs the measurement   </span></span>
 <span id="cb1-6"><a href="#cb1-6"></a>Sys.sleep &lt;-<span class="st"> </span>decorators<span class="op">::</span><span class="kw">time_it</span>(base<span class="op">::</span>Sys.sleep)</span>
 <span id="cb1-7"><a href="#cb1-7"></a><span class="kw">Sys.sleep</span>(<span class="fl">0.1</span>)</span>
-<span id="cb1-8"><a href="#cb1-8"></a><span class="co">#&gt; Time difference of 0.11 secs</span></span></code></pre></div>
+<span id="cb1-8"><a href="#cb1-8"></a><span class="co">#&gt; Time difference of 0.1 secs</span></span></code></pre></div>
 </div>
 <div class="section level3">
 <h3 id="validate_arguments-decorator">
